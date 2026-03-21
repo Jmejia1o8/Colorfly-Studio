@@ -1,0 +1,44 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorfly Studio | Paletas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- HTML Semántico: Usamos header para el encabezado -->
+    <header>
+        <h1>Colorfly Studio 🎨</h1>
+        <p>Generador de Paletas Interactivo</p>
+    </header>
+
+    <!-- HTML Semántico: Usamos main para el contenido principal -->
+    <main>
+        <!-- Accesibilidad: El 'label' está asociado al 'select' por el ID -->
+        <section class="controles">
+            <div class="grupo-control">
+                <label for="selector-cantidad">Tamaño de paleta:</label>
+                <select id="selector-cantidad">
+                    <option value="6">6 Colores</option>
+                    <option value="8">8 Colores</option>
+                    <option value="9">9 Colores</option>
+                </select>
+            </div>
+            
+            <button id="btn-generar" class="btn primario">Generar Paleta</button>
+            
+            <!-- ⭐ EXTRA POINT: Guardado de paletas -->
+            <button id="btn-guardar" class="btn secundario">💾 Guardar Paleta</button>
+            <button id="btn-cargar" class="btn secundario">📂 Cargar Guardada</button>
+        </section>
+
+        <!-- Aquí inyectaremos las tarjetas de colores -->
+        <section id="contenedor-paleta" class="grid-paleta"></section>
+    </main>
+
+    <!-- Microfeedback: Un pequeño cartel oculto que saldrá al copiar -->
+    <div id="toast" class="oculto">¡Código copiado al portapapeles!</div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
