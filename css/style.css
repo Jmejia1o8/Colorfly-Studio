@@ -1,0 +1,10 @@
+/* Variables base y limpieza, orden general a toda la pagina*/
+* { box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Segoe UI', sans-serif; }
+body { background-color: #f8f9fa; 
+    color: #333; 
+    text-align: center; 
+    padding: 2rem; }
+
