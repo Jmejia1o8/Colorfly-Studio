@@ -37,7 +37,45 @@ body { background-color: #f8f9fa;
 .btn:hover { transform: translateY(-2px); } /* Animación: Se eleva un poquito al pasar el mouse */
 .primario:hover { background-color: #1a252f; }
 
+/* Grid para Desktop (conectar con js)*/
+.grid-paleta {
+    display: grid;
+    gap: 15px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
 
+/* Tarjetas de Color */
+.tarjeta-color {
+    height: 180px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px;
+
+/* ⭐ EXTRA POINT: Animaciones Sutiles en la tarjeta */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    cursor: pointer;
+}
+
+/* Apariencia tipo 3D para las tarjetas*/
+.tarjeta-color:hover {
+    transform: scale(1.03); /* Se agranda un 3% */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Accesibilidad: Etiqueta blanca para asegurar que el HEX siempre se lea bien */
+.info-color {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
 
 
 
