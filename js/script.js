@@ -18,3 +18,24 @@ function generarHEX() {
 function generarHSL() {
     return `hsl(${Math.floor(Math.random() * 360)}, ${Math.floor(Math.random() * 100)}%, ${Math.floor(Math.random() * 100)}%)`;
 }
+
+// --- 3. LÓGICA DE LA PALETA ---
+function crearPaleta() {
+    const cantidad = parseInt(selector.value);
+    
+    // Configuramos el Grid (3 columnas para 6 y 9, 4 columnas para 8)
+    contenedor.className = cantidad === 8 ? 'grid-paleta grid-4' : 'grid-paleta grid-3';
+    
+    // Si la paleta no tiene colores, la llenamos vacía primero (.fill o from)(DUDA)*********
+    if (paletaActual.length !== cantidad) {
+        paletaActual = Array.from({ length: cantidad }, () => ({ hex: "", hsl: "", bloqueado: false }));    }
+//-----------------------------------------------------------------------------------------------------------
+    // ⭐ EXTRA POINT: Bloqueo de colores. 
+    // Solo generamos un color NUEVO si el actual NO está bloqueado.
+    paletaActual = paletaActual.map(color => {
+        if (color.bloqueado) return color; // Si está bloqueado, lo dejamos quieto
+        return { hex: generarHEX(), hsl: generarHSL(), bloqueado: false }; // Si no, generamos uno nuevo
+    });
+
+    renderizarDOM();
+}
