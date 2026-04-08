@@ -141,4 +141,20 @@ btnCargar.addEventListener('click', () => {
     }
 });
 
+// --- 6. ARRANQUE INICIAL ---
+btnGenerar.addEventListener('click', crearPaleta);
+
+selectorFormato.addEventListener('change', () => {
+    renderizarDOM(); // Simplemente volvemos a dibujar con el nuevo formato
+});
+
+// Al cambiar el selector, generamos una paleta nueva para adaptarnos al tamaño(Corregir)
+selector.addEventListener('change', () => {
+    paletaActual = []; // Borramos la actual para forzar el rediseño
+    crearPaleta();
+});
+
+// Generamos la primera paleta al cargar la página
+crearPaleta();
+
 
