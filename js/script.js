@@ -108,3 +108,26 @@ function renderizarDOM() {
     });
 }
 
+
+// --- 5. FUNCIONES EXTRA (LOS PUNTOS ADICIONALES) ---
+
+// ⭐ EXTRA POINT: Copiar al portapapeles y Microfeedback
+function copiarAlPortapapeles(texto) {
+    navigator.clipboard.writeText(texto).then(() => {
+        // Mostramos el Toast
+        toast.classList.remove('oculto');
+        toast.textContent = `¡Código ${texto} copiado!`;
+        // Lo ocultamos después de 2 segundos
+        setTimeout(() => toast.classList.add('oculto'), 2000);
+    });
+}
+
+// ⭐ EXTRA POINT: Guardado en LocalStorage
+// LocalStorage es como la bodega a largo plazo del navegador.
+btnGuardar.addEventListener('click', () => {
+    // Convertimos nuestra lista (Array) a texto (JSON) para poder guardarlo
+    localStorage.setItem('paletaGuardadaColorfly', JSON.stringify(paletaActual));
+    alert("¡Paleta guardada en el navegador!");
+});
+
+
