@@ -39,3 +39,30 @@ function crearPaleta() {
 
     renderizarDOM();
 }
+
+
+function renderizarDOM() {
+    contenedor.innerHTML = ''; // Limpiamos la bodega
+        const formatoElegido = selectorFormato.value; // ¿HEX o HSL?
+
+paletaActual.forEach((color, index) => {
+// Creamos la tarjeta...
+    const tarjeta = document.createElement('div');
+    tarjeta.className = 'tarjeta-color';
+    tarjeta.style.backgroundColor = color.hex;
+
+// --- EL CAMBIO CLAVE ---
+// Elegimos qué texto mostrar según el selector
+    const textoColor = formatoElegido === 'hex' ? color.hex : color.hsl;
+
+    tarjeta.innerHTML = `
+        <span class="info-color">${textoColor}</span>
+        <button class="btn-copiar">Copiar</button>
+        <button class="btn-candado ${color.bloqueado ? 'bloqueado' : ''}">
+            ${color.bloqueado ? '🔒' : '🔓'}
+        </button>
+        `;
+        
+        contenedor.appendChild(tarjeta);
+    });
+}
