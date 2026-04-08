@@ -23,12 +23,36 @@ function generarHSL() {
 function crearPaleta() {
     const cantidad = parseInt(selector.value);
     
-    // Configuramos el Grid (3 columnas para 6 y 9, 4 columnas para 8)
+    // 1. Ajustamos el Grid (Esto no cambia)
     contenedor.className = cantidad === 8 ? 'grid-paleta grid-4' : 'grid-paleta grid-3';
     
-    // Si la paleta no tiene colores, la llenamos vacía primero (.fill o from)(DUDA)*********
-    if (paletaActual.length !== cantidad) {
-        paletaActual = Array.from({ length: cantidad }, () => ({ hex: "", hsl: "", bloqueado: false }));    }
+    // 2. REGLA DE ORO: Si faltan colores, los agregamos como objetos vacíos
+    while (paletaActual.length < cantidad) {
+        paletaActual.push({ hex: "", hsl: "", bloqueado: false });
+    }
+
+    // 3. Si sobran (porque bajamos el número), recortamos
+    if (paletaActual.length > cantidad) {
+        paletaActual = paletaActual.slice(0, cantidad);
+    }
+
+    // 4. EL GENERADOR INTELIGENTE:
+    // Recorremos la lista y solo cambiamos los que NO están bloqueados
+    paletaActual = paletaActual.map(color => {
+        if (color.bloqueado && color.hex !== "") {
+            return color; // Si está bloqueado y tiene color, déjelo quieto
+        } else {
+            // Si no está bloqueado (o está vacío), generamos color nuevo
+            return {
+                ...color,
+                hex: generarHEX(),
+                hsl: generarHSL()
+            };
+        }
+    });
+
+
+
 //-----------------------------------------------------------------------------------------------------------
     // ⭐ EXTRA POINT: Bloqueo de colores. 
     // Solo generamos un color NUEVO si el actual NO está bloqueado.
@@ -149,12 +173,5 @@ selectorFormato.addEventListener('change', () => {
 });
 
 // Al cambiar el selector, generamos una paleta nueva para adaptarnos al tamaño(Corregir)
-selector.addEventListener('change', () => {
-    paletaActual = []; // Borramos la actual para forzar el rediseño
-    crearPaleta();
-});
-
-// Generamos la primera paleta al cargar la página
-crearPaleta();
-
+selector.addEventListener('change', crearPaleta);
 
