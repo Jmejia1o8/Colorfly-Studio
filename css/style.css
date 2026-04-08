@@ -93,4 +93,46 @@ body { background-color: #f8f9fa;
 }
 .oculto { opacity: 0; pointer-events: none; }
 
+/* =========================================
+DISEÑO RESPONSIVO 
+   ========================================= */
+
+/* 1. Para pantallas medianas (Tablets o celulares en horizontal: menos de 900px) */
+@media (max-width: 900px) {
+    /* Forzamos a que sin importar si son 5, 6 u 8 colores, se muestren de a 2 columnas */
+    .grid-3, .grid-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    /* Si tienes un contenedor para los botones arriba, hacemos que se apilen bonito */
+    header, .controles {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+}
+
+/* 2. Para pantallas pequeñas (Celulares en vertical: menos de 600px) */
+@media (max-width: 600px) {
+    /* En el celular mandamos todo a 1 sola columna hacia abajo (tipo Instagram) */
+    .grid-3, .grid-4 {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Hacemos que las tarjetas no sean tan gigantes a lo alto */
+    .tarjeta-color {
+        min-height: 120px; 
+    }
+    
+    /* Achicamos un poquito la letra para que quepa bien en la pantalla */
+    .info-color {
+        font-size: 1.2rem;
+    }
+    
+    button {
+        width: 100%; /* Los botones ocupan todo el ancho para que sea fácil tocarlos con el dedo gordo */
+        margin-bottom: 5px;
+    }
+}
+
 
