@@ -129,5 +129,16 @@ btnGuardar.addEventListener('click', () => {
     localStorage.setItem('paletaGuardadaColorfly', JSON.stringify(paletaActual));
     alert("¡Paleta guardada en el navegador!");
 });
+btnCargar.addEventListener('click', () => {
+    // Buscamos si hay algo guardado
+    const guardado = localStorage.getItem('paletaGuardadaColorfly');
+    if (guardado) {
+        paletaActual = JSON.parse(guardado); // Lo volvemos a convertir en lista
+        selector.value = paletaActual.length; // Ajustamos el select
+        renderizarDOM();
+    } else {
+        alert("No hay paletas guardadas.");
+    }
+});
 
 
