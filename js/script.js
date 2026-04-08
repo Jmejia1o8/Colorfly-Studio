@@ -6,6 +6,8 @@ const btnGuardar = document.getElementById('btn-guardar');
 const btnCargar = document.getElementById('btn-cargar');
 const toast = document.getElementById('toast');
 
+const selectorFormato = document.getElementById('selector-formato');
+
 // Esta variable guardará nuestra paleta actual en la memoria temporal(array vacio)
 let paletaActual = [];
 
