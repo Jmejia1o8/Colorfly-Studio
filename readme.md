@@ -48,9 +48,11 @@ Para este proyecto se optó por una arquitectura de **Vanilla JavaScript** (JS p
 ### Local
 Solo necesitas clonar el repositorio y abrir el archivo `index.html` en cualquier navegador moderno.
 
-### Despliegue (GitHub Pages)
+### Despliegue [GitHub Pages]
 1.  Sube tu código a un repositorio de GitHub.
 2.  Ve a **Settings > Pages**.
 3.  En "Branch", selecciona `main` y la carpeta `/ (root)`.
 4.  Guarda y en pocos minutos tu aplicación estará en vivo.
 
+### Link GitHub Pages
+https://jmejia1o8.github.io/Colorfly-Studio/

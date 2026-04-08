@@ -42,28 +42,28 @@ Prompt Maestro: Arquitectura de Colorfly Studio
 * **Prompt utilizado:** *"Actúa como un arquitecto frontend. Necesito que compares el uso de formatos HEX y HSL para manipulación dinámica del DOM en tiempo real. Analiza los pros y contras en términos de rendimiento de renderizado del navegador frente a la accesibilidad y UX para el usuario final."*
 * **Resultado de la IA:** Explicación detallada sobre el uso de HEX (`#RRGGBB`) por su rendimiento y compatibilidad universal en navegadores, y el uso de HSL para facilitar la lectura al usuario humano.
 * **Captura de pantalla:**
-    *(Inserta tu imagen aquí: `![Captura HEX vs HSL](./assets/ia-hex.png)`)*
+    *(Inserta tu imagen aquí: ![Captura HEX vs HSL](./imagenesIA/Prom1.png))*
 
 ### 2. Depuración de Lógica (Bug del Candado)
 * **Objetivo:** Solucionar un error crítico donde el cambio en la cantidad de colores borraba la memoria de los colores bloqueados.
 * **Prompt utilizado:** *"Estoy enfrentando un problema de pérdida de estado en JavaScript. Al redimensionar mi array paletaActual, el sistema sobrescribe y elimina los objetos que tienen la propiedad bloqueado: true. Refactoriza la función generadora utilizando métodos de array inmutables (map, filter, while) para preservar los estados previos al adaptar el tamaño del Grid."*
 * **Resultado de la IA:** Diagnóstico del error (`paletaActual = []`) y reestructuración de la función `crearPaleta()` utilizando los métodos `while` para rellenar vacíos y `map` para respetar la propiedad `bloqueado: true` de los objetos existentes.
 * **Captura de pantalla:**
-    *(Inserta tu imagen aquí: `![Captura Bug Candado](./assets/ia-bug.png)`)*
+    *(Inserta tu imagen aquí: ![Captura Bug Candado](./imagenesIA/Prom2.png))*
 
 ### 3. Solución de Errores de Sintaxis (ReferenceError)
 * **Objetivo:** Encontrar la causa de un fallo que congelaba el botón de "Generar".
 * **Prompt utilizado:** La consola del navegador arroja un Uncaught ReferenceError: generarHexAleatorio is not defined en la línea 48 de mi script, específicamente dentro del callback de un Array.map(). ¿Es un problema de error tipográfico en la declaración de la función?*
 * **Resultado de la IA:** Identificación rápida de un error de nomenclatura en la llamada a la función (typo) y confirmación del correcto orden de ejecución de las funciones globales.
 * **Captura de pantalla:**
-    *(Inserta tu imagen aquí: `![Captura Error Consola](./assets/ia-consola.png)`)*
+    *(Inserta tu imagen aquí: [Captura Error Consola](./imagenesIA/Prom3.png))*
 
 ### 4. Implementación de Diseño Responsivo
 * **Objetivo:** Adaptar la aplicación para dispositivos móviles tras pruebas iniciales fallidas.
 * **Prompt utilizado:** *"La estructura actual basada en CSS Grid no es responsiva y presenta desbordamiento horizontal (overflow) en el viewport móvil. Genera las Media Queries necesarias (max-width: 600px y 900px) para implementar un diseño fluido, transformando el grid-template-columns a '1fr' y optimizando el área táctil (touch target) de los controles UI"*
 * **Resultado de la IA:** Generación del bloque CSS con `@media queries` para pantallas de `<900px` y `<600px`, reestructurando el `grid-template-columns` a 1 y 2 fracciones (`1fr`) y optimizando el ancho de los botones al 100% para mejor UX táctil.
 * **Captura de pantalla:**
-    *(Inserta tu imagen aquí: `![Captura Diseño Movil](./assets/ia-movil.png)`)*
+    *(Inserta tu imagen aquí: [Captura Diseño Movil](./imagenesIA/Prom4.png))*
 
 ---
-*Nota: Todo el código sugerido por la IA fue analizado, probado e integrado manualmente para asegurar la coherencia del proyecto.*
+*Nota: Todo el código sugerido por la IA fue analizado, probado e integrado manualmente para asegurar la coherencia del proyecto. La IA no se utilizó para evadir el trabajo, sino como una herramienta de aceleración de aprendizaje (Pair Programming). Me permitió entender cómo implementar funciones complejas (como el guardado local y el bloqueo individual de colores) aplicando lógica de gestión de estado en Vanilla JavaScript.*
