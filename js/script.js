@@ -66,3 +66,45 @@ paletaActual.forEach((color, index) => {
         contenedor.appendChild(tarjeta);
     });
 }
+
+// --- 4. RENDERIZADO VISUAL ---
+function renderizarDOM() {
+    contenedor.innerHTML = ''; // Limpiamos la vitrina
+
+    paletaActual.forEach((color, index) => {
+        // Creamos la tarjeta
+        const tarjeta = document.createElement('div');
+        tarjeta.className = 'tarjeta-color';
+        tarjeta.style.backgroundColor = color.hex;
+
+     // ⭐ EXTRA POINT: Copiar al portapapeles
+        // Accesibilidad: Agregamos title y tabindex(Tab)
+        tarjeta.tabIndex = 0; 
+        tarjeta.title = "Clic para copiar";
+        tarjeta.addEventListener('click', (e) => {
+            // Evitamos que copiar active el candado si le dimos clic al botón del candado...
+            if(e.target.tagName !== 'BUTTON') copiarAlPortapapeles(color.hex);
+        });
+// Etiqueta del código
+        const info = document.createElement('div');
+        info.className = 'info-color';
+        info.textContent = color.hex; // Mostramos HEX como pidió el cliente
+
+        // ⭐ EXTRA POINT: Botón de Bloqueo
+        const btnCandado = document.createElement('button');
+        btnCandado.className = 'btn-candado';
+        btnCandado.textContent = color.bloqueado ? '🔒' : '🔓';
+        btnCandado.title = color.bloqueado ? 'Desbloquear color' : 'Bloquear color';
+        
+        // Evento para bloquear/desbloquear
+        btnCandado.addEventListener('click', () => {
+            paletaActual[index].bloqueado = !paletaActual[index].bloqueado;
+            renderizarDOM(); // Refrescamos para mostrar el candado cerrado/abierto
+        });
+
+        tarjeta.appendChild(info);
+        tarjeta.appendChild(btnCandado);
+        contenedor.appendChild(tarjeta);
+    });
+}
+
